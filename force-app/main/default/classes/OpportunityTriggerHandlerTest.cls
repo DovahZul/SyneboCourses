@@ -22,8 +22,6 @@ public with sharing class OpportunityTriggerHandlerTest {
     public static void checkOpportunityBindings(){
 
         Opportunity testOpportunity = new Opportunity(Name = 'Test Opportunity', CloseDate = date.newInstance(2001, 3, 21), StageName = 'Closed Won');
-        //opportunity.StageName = 'Closed Won';
-
         insert testOpportunity;
 
         //List<Task> = new List<Task>()
