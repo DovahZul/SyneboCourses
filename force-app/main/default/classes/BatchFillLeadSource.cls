@@ -11,16 +11,13 @@ global class BatchFillLeadSource implements Database.Batchable<sObject>, Databas
 
     */
     public BatchFillLeadSource(){
-        this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:3';
+        this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:2 or CreatedDate = THIS_MONTH';
         this.leadSource =  'Other';
     }
     public BatchFillLeadSource(String source){
-        this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:3';
+        this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:2 or CreatedDate = THIS_MONTH';
         this.leadSource = source != ''? source : 'Other';
     }
-
-
-    // instance member to retain state across transactions
     
     global Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator(this.query);
