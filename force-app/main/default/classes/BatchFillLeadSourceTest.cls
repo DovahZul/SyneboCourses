@@ -29,7 +29,7 @@ public with sharing class BatchFillLeadSourceTest {
     @IsTest
     public static void proceedLeads(){
 
-        String testSource = 'Partner Refferal';
+        String testSource = 'Partner Referral';
         Test.startTest();
         BatchFillLeadSource fls = new BatchFillLeadSource(testSource);
         Id batchId = Database.executeBatch(fls);
