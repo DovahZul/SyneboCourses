@@ -10,9 +10,13 @@ global class BatchFillLeadSource implements Database.Batchable<sObject>, Databas
 
 
     */
+    public BatchFillLeadSource(){
+        this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:3';
+        this.leadSource =  'Other';
+    }
     public BatchFillLeadSource(String source){
         this.query = 'SELECT LeadSource FROM Lead WHERE CreatedDate = LAST_N_MONTHS:3';
-        this.leadSource = source != null?source : 'Web';
+        this.leadSource = source != ''? source : 'Other';
     }
 
 
