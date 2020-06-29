@@ -3,15 +3,7 @@ public with sharing class BatchFillLeadSourceTest {
    
     @testSetup 
     public static void setup() {
-        List<Account> accounts = new List<Account>();
-        List<Contact> contacts = new List<Contact>();
-        // insert 10 accounts
-        for (Integer i=0;i<10;i++) {
-            accounts.add(new Account(name='Account '+i, 
-                billingcity='New York', billingcountry='USA'));
-        }
-        List<Lead> leads = new List<Lead>();
-        insert leads;
+       
         for (Integer i = 0; i < 10; i++) {
             leads.add(new Lead(
                 Company = 'Web company', 
@@ -28,6 +20,8 @@ public with sharing class BatchFillLeadSourceTest {
                 LeadSource = 'Purchased List'
                 ));
         }
+
+        insert leads;
 
     }
 
