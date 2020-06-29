@@ -3,7 +3,8 @@ public with sharing class BatchFillLeadSourceTest {
    
     @testSetup 
     public static void setup() {
-       
+        
+        List<Lead> leads = new List<Lead>();
         for (Integer i = 0; i < 10; i++) {
             leads.add(new Lead(
                 Company = 'Web company', 
