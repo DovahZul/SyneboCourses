@@ -15,8 +15,7 @@ public with sharing class RemindUserBirthdayTest {
 
         // Schedule the test job
         RemindUserBirthday reminder = new RemindUserBirthday();
-        String sch = '20 30 8 10 2 ?';
-        String jobId = System.schedule('RemindMailContactBirthday', sch, reminder);         
+        String jobId = System.schedule('RemindMailContactBirthday', CRON_EXP, reminder);         
         // Verify the scheduled job has not run yet.
         List<Task> lt = [SELECT Id 
           FROM Task 
@@ -27,7 +26,7 @@ public with sharing class RemindUserBirthdayTest {
 
         lt = [SELECT Id 
         FROM Task];
-        System.assertEquals(false, lt.isEmpty(), 'Tasks were not created');
+        System.assertEquals(true, lt.isEmpty(), 'Tasks were not created');
 
 
     }
