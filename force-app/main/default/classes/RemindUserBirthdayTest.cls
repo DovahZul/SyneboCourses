@@ -26,7 +26,8 @@ public with sharing class RemindUserBirthdayTest {
 
         lt = [SELECT Id 
         FROM Task];
-        System.assertEquals(true, lt.isEmpty(), 'Tasks were not created');
+        //System.assertEquals(, lt.size(), 'JobId is invalid' + jobId);
+        System.assertEquals(false, lt.isEmpty(), 'Tasks were not created '+ jobId);
 
 
     }
