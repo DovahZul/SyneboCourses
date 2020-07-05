@@ -3,20 +3,22 @@ public with sharing class RemindUserBirthdayTest {
 
     public static String CRON_EXP = '0 0 9 1/1 * ? *'; // '0 0 9 ? * * *' '0 0 0 15 3 ? 2022'
 
-    public RemindUserBirthdayTest() {
 
+    @TestSetup
+    static void makeData(){
+
+      // add some test contacts
+      List<Contact> testContacts = new List<Contact>();
+      for(Integer i = 0; i < 5; i++){
+        testContacts.add(new Contact(LastName = 'lname birthday', Birthdate = System.today()));
+      }
+      insert(testContacts);
     }
 
 
     @IsTest
     public static void testBirthdaySpam(){
 
-        // add some test contacts
-        List<Contact> testContacts = new List<Contact>();
-        for(Integer i = 0; i < 5; i++){
-          testContacts.add(new Contact(LastName = 'lname birthday', Birthdate = System.today()));
-        }
-        insert(testContacts);
         Test.startTest();
 
         // Schedule the test job
