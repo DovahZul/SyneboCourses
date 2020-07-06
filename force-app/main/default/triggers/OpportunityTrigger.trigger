@@ -1,18 +1,18 @@
-trigger OpportunityTrigger on Opportunity (before insert, before update) {
+trigger OpportunityTrigger on Opportunity (after insert, after update) {
 
-    if(Trigger.isBefore && Trigger.isUpdate){
+    if(Trigger.isAfter && Trigger.isUpdate){
 
         System.debug('[DOVAHZUL][HANDLE][OpportunityTrigger] before update');
-        OpportunityTriggerHandler.handleBeforeUpdate(Trigger.new);
+        OpportunityTriggerHandler.handleAfterUpdate(Trigger.new);
 
         
 
     }
 
-    if(Trigger.isBefore && Trigger.isInsert){
+    if(Trigger.isAfter && Trigger.isInsert){
 
         System.debug('[DOVAHZUL][HANDLE][OpportunityTrigger] before insert');
-        OpportunityTriggerHandler.handleBeforeInsert(Trigger.new);
+        OpportunityTriggerHandler.handleAfterInsert(Trigger.new);
 
     }
     

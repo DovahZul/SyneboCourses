@@ -6,11 +6,11 @@ public with sharing class OpportunityTriggerHandler {
 
     }
 
-    public static void handleBeforeInsert(List<Opportunity> opportunities){
+    public static void handleAfterInsert(List<Opportunity> opportunities){
         bindTask(opportunities);
     }
 
-    public static void handleBeforeUpdate(List<Opportunity> opportunities){
+    public static void handleAfterUpdate(List<Opportunity> opportunities){
         bindTask(opportunities);
     }
 
