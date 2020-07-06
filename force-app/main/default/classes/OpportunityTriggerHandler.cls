@@ -2,7 +2,7 @@ public with sharing class OpportunityTriggerHandler {
     
     public OpportunityTriggerHandler() {
 
-        System.debug('[DOVAHZUL][OpportunityTriggerHandler] constructor init');
+        System.debug('[OpportunityTriggerHandler] constructor init');
 
     }
 
