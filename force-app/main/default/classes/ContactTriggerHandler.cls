@@ -11,8 +11,10 @@ public with sharing class ContactTriggerHandler {
         for(Contact contact_i : [SELECT Id 
             FROM Contact 
             WHERE Id IN (SELECT ContactId FROM Case WHERE IsClosed = FALSE) AND Id IN :Trigger.old]){
-                contact_i.addError('Cannot delete contact with open cases');
+                contact_i.addError(System.Label.related_contact);
+                System.debug(System.Label.related_contact + ':' + contact_i.LastName );
         }
+
 
     }
 
