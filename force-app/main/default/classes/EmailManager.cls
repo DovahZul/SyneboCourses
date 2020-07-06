@@ -1,5 +1,3 @@
-
-
 public class EmailManager {
 
     
@@ -29,4 +27,3 @@ public class EmailManager {
     }
 
 }
-

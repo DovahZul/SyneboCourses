@@ -6,7 +6,7 @@ global class RemindUserBirthday implements Schedulable {
 
             List<Contact> birthdays =  [SELECT Name, Birthdate
             FROM Contact
-            WHERE Birthdate >= TODAY];
+            WHERE Birthdate = TODAY];
             Util.remindBirthdays(birthdays);
     }
 
