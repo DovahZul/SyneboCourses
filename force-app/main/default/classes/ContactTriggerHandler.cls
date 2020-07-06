@@ -5,7 +5,7 @@ public with sharing class ContactTriggerHandler {
         System.debug('[ContactTriggerHandler] constructor init');
 
     }
-
+    // prevent contact deletion when it has open cases
     public static void handleDeletion(List<Contact> contacts){
 
         for(Contact contact_i : [SELECT Id 
