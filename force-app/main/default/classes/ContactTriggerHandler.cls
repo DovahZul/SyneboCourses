@@ -1,5 +1,8 @@
 public with sharing class ContactTriggerHandler {
+
     public ContactTriggerHandler() {
+
+        System.debug('[ContactTriggerHandler] constructor init');
 
     }
 
@@ -7,7 +10,7 @@ public with sharing class ContactTriggerHandler {
 
         for(Contact contact_i : [SELECT Id 
             FROM Contact 
-            WHERE Id IN (SELECT ContactId FROM Case WHERE IsClosed = FALSE)]){
+            WHERE Id IN (SELECT ContactId FROM Case WHERE IsClosed = FALSE) AND Id IN :Trigger.old]){
                 contact_i.addError('Cannot delete contact with open cases');
         }
 
