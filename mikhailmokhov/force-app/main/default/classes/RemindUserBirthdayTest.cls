@@ -32,10 +32,10 @@ public with sharing class RemindUserBirthdayTest {
 
         Test.stopTest();
 
-        lt = [SELECT Id 
+        List<Task> lt2 = [SELECT Id 
         FROM Task];
         //System.assertEquals(, lt.size(), 'JobId is invalid' + jobId);
-        System.assertEquals(false, lt.isEmpty(), 'Tasks were not created'+ jobId);
+        System.assertEquals(false, lt2.isEmpty(), 'Tasks were not created'+ jobId);
 
 
     }
