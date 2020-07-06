@@ -27,9 +27,12 @@ public with sharing class ContactTriggerHandlerTest {
 
         List<Contact> toDelete = [SELECT Id from Contact WHERE LastName LIKE '%Bob%'];
 
-        System.assertEquals(true, true);//!relatedContact.gotDeleted() && unrelatedContact.gotDeleted());
+        delete(toDelete);
 
+        List<Contact> notDeleted = [SELECT ID FROM Contact WHERE LastName LIKE '%Bob%'];
+        System.assertEquals(false, notDeleted.isEmpty());//!relatedContact.gotDeleted() && unrelatedContact.gotDeleted());
 
+        
 
     }
 }
