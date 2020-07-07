@@ -2,7 +2,7 @@ public with sharing class ExternalIdManager {
 
 
     @future
-    public static void populateExternalId(Id contactId){
+    public static void futurePopulateExternalId(Id contactId){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('http://www.uuidgenerator.net/api/version1');
@@ -17,7 +17,7 @@ public with sharing class ExternalIdManager {
            // upsert(targetContact);
            System.debug('got target contact id: ' + contactId + ':' + reference);
         } else {
-    // Log error / send email
+    // Log error
 }
     }
 }
