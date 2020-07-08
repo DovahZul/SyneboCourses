@@ -11,7 +11,11 @@ public with sharing class AccountTriggerHandler {
         specifyDescription(newList);
     }
 
-    
+    public static void handleExternalId(List<Account> accounts){
+        for(Account account_i : accounts){
+            ExternalIdManager.futurePopulateExternalId(account_i.Id);
+        }
+    }
 
     public static void handleAfterInsert(List<Account> newList){
 

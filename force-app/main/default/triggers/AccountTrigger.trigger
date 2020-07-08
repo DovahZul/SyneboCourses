@@ -16,6 +16,10 @@ trigger AccountTrigger on Account (before insert, after insert, before update, b
 
     }
 
+    if(Trigger.isAfter && (Trigger.isUpdate || Trigger.isInsert) ){
+        AccountTriggerHandler.handleExternalId(Trigger.new);
+    }
+
     
 
     /**
