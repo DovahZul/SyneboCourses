@@ -24,7 +24,7 @@ public with sharing class OpportunityTriggerHandler {
             
         List<Task> toInsert = new List<Task>();
             for(Opportunity op : opportunities){
-                if(oldMap.keyset().contains(op.Id) && op.IsWon == true ){
+                if(oldMap.get(op.Id).StageName != op.StageName && op.IsWon == true ){
                     toInsert.add(new Task(Subject = 'Follow up Closed Won', WhatId = op.Id));
                 }
             }
