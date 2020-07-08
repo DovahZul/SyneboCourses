@@ -7,8 +7,6 @@ trigger ContactTrigger on Contact (before delete) {
 
     }
 
-    if(Trigger.isAfter && (Trigger.isUpdate || Trigger.isInsert) ){
-        ContactTriggerHandler.handleExternalId(Trigger.new);
-    }
+
 
 }

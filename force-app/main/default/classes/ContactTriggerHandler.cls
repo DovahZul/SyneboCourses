@@ -13,9 +13,5 @@ public with sharing class ContactTriggerHandler {
 
     }
 
-    public static void handleExternalId(List<Contact> contacts){
-        for(Contact contact_i : contacts){
-            ExternalIdManager.futurePopulateExternalId(contact_i.Id);
-        }
-    }
+
 }
