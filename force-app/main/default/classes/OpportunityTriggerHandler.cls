@@ -7,18 +7,10 @@ public with sharing class OpportunityTriggerHandler {
     }
 
     public static void handleAfterInsert(List<Opportunity> opportunities){
-        bindTask(opportunities);
-    }
-
-    public static void handleAfterUpdate(List<Opportunity> opportunities){
-        bindTask(opportunities);
-    }
-
-    private static void bindTask(List<Opportunity> opportunities){
-
+        
         List<Task> toInsert = new List<Task>();
         for(Opportunity op : opportunities){
-            if(op.IsWon == true){
+            if(op.IsWon == true ){
                 toInsert.add(new Task(Subject = 'Follow up Closed Won', WhatId = op.Id));
             }
         }
@@ -27,4 +19,19 @@ public with sharing class OpportunityTriggerHandler {
             insert toInsert;
         }
     }
+    
+    public static void handleAfterUpdate(Map<Id,Opportunity> oldMap, List<Opportunity> opportunities){
+            
+        List<Task> toInsert = new List<Task>();
+            for(Opportunity op : opportunities){
+                if(oldMap.keyset().contains(op.Id) && op.IsWon == true ){
+                    toInsert.add(new Task(Subject = 'Follow up Closed Won', WhatId = op.Id));
+                }
+            }
+
+            if(!toInsert.isEmpty()){
+                insert toInsert;
+            }
+    }
+    
 }
