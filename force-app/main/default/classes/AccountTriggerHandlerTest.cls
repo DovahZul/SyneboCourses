@@ -30,4 +30,20 @@ private class AccountTriggerHandlerTest {
             insert taskToInsertList;
         }
     }
+
+    // in process
+    @IsTest
+    public static checkExternalIdCallout(){
+        StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
+        mock.setStaticResource('getExternalIdMock');
+        mock.setStatusCode(200);
+        mock.setHeader('Content-Type', 'text/plain;charset=UTF-8');
+        // Associate the callout with a mock response
+        Test.setMock(HttpCalloutMock.class, mock);
+        HttpResponse result = ExternalIdManager.futurePopulateExternalId();
+        // Verify mock response is not null
+        System.assertNotEquals(null,result,
+            'The callout returned a null response.');
+    }
+
 }
